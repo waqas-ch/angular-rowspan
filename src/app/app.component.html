@@ -1,0 +1,30 @@
+<h1>Angular Table</h1>
+<hr>
+
+<table style="width: 100%;">
+
+  <tr>
+    <th *ngFor="let column of headers">
+      {{column}}
+    </th>
+  </tr>
+
+  <ng-container *ngFor="let row of result; let j= index ">
+    <ng-container *ngFor="let subItems of row.surveySubPillers; let i= index "> 
+      <ng-container *ngFor="let question of subItems.surveyQuestions; let x= index "> 
+      <tr>
+    <td *ngIf="showMain(i,row.mainSpan)" [attr.rowspan]="row.mainSpan">
+      {{row.mainPiller}} {{j}}
+    </td>
+      <td *ngIf="showSub(x,subItems.pillerSpan)"  [attr.rowspan]="subItems.pillerSpan">{{subItems.subPiller}} {{i}}</td>
+      <td>{{question.question}} {{i}}</td>
+    <td>questions</td>
+    <td>doc</td>
+    <td>entity</td>
+    <td>cse</td>
+    <td>cse feed</td>
+  </tr>
+    </ng-container>
+  </ng-container>
+  </ng-container>
+</table>
